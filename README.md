@@ -1,3 +1,36 @@
+# React DisneyPlus ToyProject
+
+## 💻 프로젝트 소개
+리액트를 사용한 디즈니 플러스 웹 사이트 오마주 프로젝트
+
+## 🕰️ 개발일정
+2024/07/18 - 프로젝트 시작
+
+## 🛠️ 개발도구 및 환경
+- `Visual Studio Code`
+- `npm v10.7.0`
+- `node v20.15.0`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
