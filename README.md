@@ -11,6 +11,10 @@
 - `npm v10.7.0`
 - `node v20.15.0`
 
+## Branch
+- `main` : home
+- `cmp` : company
+
 
 
 
