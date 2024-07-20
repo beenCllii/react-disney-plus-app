@@ -51,8 +51,8 @@ const Row = ({title,id,fetchUrl}) => {
         </div>
       </div>
 
-      {setModalOpen && 
-      <MovieModal {...movieSelected} modalOpen={modalOpen}
+      {modalOpen && 
+      <MovieModal {...movieSelected} setModalOpen={setModalOpen}
       />
       }
     </div>
