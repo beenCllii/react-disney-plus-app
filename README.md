@@ -15,6 +15,9 @@
 - `main` : home
 - `cmp` : company
 
+## 개발 진행상황
+`2024/07/19` : 메인 페이지 Nav, Banner, Category, Item 보강
+`2024/07/20` : react router 기능 추가 및 검색기능 , 상세페이지(이미지) 추가
 
 
 
