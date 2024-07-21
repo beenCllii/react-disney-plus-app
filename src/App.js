@@ -9,6 +9,8 @@ import MainPage from './pages/MainPage';
 import SearchPage from './pages/SearchPage';
 import DetailPage from './pages/DetailPage';
 
+import app from './firebase';
+
 const Layout = () =>{
   return(
     <div>

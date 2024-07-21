@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useLocation ,useNavigate} from'react-router-dom'
+import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 
 const Nav = () => {
 
@@ -9,7 +10,9 @@ const Nav = () => {
   const [ searchValue, setSerchValue] = useState('');
   const navigate = useNavigate();
 
-
+  // firebase auth
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
 
   useEffect(()=>{
     window.addEventListener('scroll',handlScroll)
@@ -34,6 +37,15 @@ const Nav = () => {
     navigate(`/search?q=${e.target.value}`)
   }
 
+  // Login button click handler
+  const handleAuth = () => {
+    signInWithPopup(auth, provider)
+    .then(result => {})
+    .catch(error => {
+      console.error('Error signing in with Google', error);
+    });
+  }
+
   return (
     <NavWrapper show={show}>
       <Logo>
@@ -41,7 +53,7 @@ const Nav = () => {
         </Logo>
 
         {pathname === '/'  ? 
-            <Login>Login </Login> : 
+            <Login onClick={handleAuth}>Login </Login> : 
             <Input className='nav_input' 
                    type='text' 
                    placeholder='검색'
