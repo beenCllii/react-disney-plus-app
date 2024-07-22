@@ -30,7 +30,15 @@
 
 `2024/07/21` : firebase를 이용한 구글 로그인 및 배포
 
-
+## firebase
+1. firebase npm : `npm install -g firebase-tools` 설치 안될시 sudo 추가하여 관리자권한으로 설치
+2. firebase login
+3. npm run build
+4. firebase init
+- Hosting check
+- associate thie project directory with a Firebase project
+- Hosting setup 
+5. firebase deploy
 
 
 
