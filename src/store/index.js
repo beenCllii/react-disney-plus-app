@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from './userSlice';
 import storage from "redux-persist/lib/storage";
@@ -24,3 +25,15 @@ export const store = configureStore({
 })
 
 export const persistor = persistStore(store);
+=======
+import { configureStore } from "@reduxjs/toolkit";
+import  useReducer  from "./userSlice";
+
+export const store = configureStore({
+    reducer: {
+        reducer:{
+            user: useReducer
+        }
+    }
+})
+>>>>>>> refs/remotes/origin/main
