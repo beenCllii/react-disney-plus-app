@@ -2,21 +2,24 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useLocation ,useNavigate} from'react-router-dom'
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut} from 'firebase/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser,removeUser } from '../store/userSlice'
 
 const Nav = () => {
 
   // localStorage UserData
   const initalUserData = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : {};
-
+ 
   const [show,setShow] = useState(false);
   const { pathname } = useLocation();
   const [ searchValue, setSerchValue] = useState('');
   const navigate = useNavigate();
+  const userData = useSelector(state => state.user);
 
   // firebase auth
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
-  const [userData, setUserdata] = useState(initalUserData);
+  // const [userData, setUserdata] = useState(initalUserData);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -29,6 +32,8 @@ const Nav = () => {
       }
     })
   }, [auth, navigate, pathname])
+
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     window.addEventListener('scroll',handlScroll)
@@ -57,7 +62,13 @@ const Nav = () => {
   const handleAuth = () => {
     signInWithPopup(auth, provider)
     .then(result => {
-      setUserdata(result.user);
+      // setUserdata(result.user);
+      dispatch(setUser({
+        id : result.user.id,
+        email : result.user.email,
+        photoURL : result.user.photoURL,
+        displayName : result.user.displayName
+      }))
       localStorage.setItem('userData', JSON.stringify(result.user));
     })
     .catch(error => {
@@ -69,7 +80,8 @@ const Nav = () => {
   // Logout button click handler
   const handleSignOut = () => {
     signOut(auth).then(()=> {
-      setUserdata(null);
+      // setUserdata(null)
+      dispatch(removeUser());
       localStorage.removeItem('userData');
       navigate('/');
     }).catch(error => {
